@@ -1,0 +1,159 @@
+
+/* ROMANTIC MEMORIES GALLERY */
+
+.memory-gallery {
+  width: 100%;
+  max-width: 1050px;
+  margin: auto;
+  padding: 30px 16px;
+  text-align: center;
+}
+
+.gallery-title {
+  color: #ff8ad8;
+  font-size: clamp(26px, 5vw, 42px);
+  text-shadow: 0 0 15px #ff39cf;
+  margin-bottom: 12px;
+}
+
+.gallery-subtitle {
+  color: #d8c5f5;
+  font-size: 15px;
+  line-height: 1.7;
+  margin-bottom: 30px;
+}
+
+.gallery-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 20px;
+}
+
+.memory-card {
+  padding: 12px;
+  background: rgba(42, 19, 65, 0.75);
+  border: 1px solid rgba(255, 57, 207, 0.65);
+  border-radius: 18px;
+  box-shadow: 0 0 15px rgba(255, 57, 207, 0.12);
+  overflow: hidden;
+  transition: transform 0.3s ease,
+              box-shadow 0.3s ease;
+}
+
+.memory-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 0 22px rgba(255, 57, 207, 0.35);
+}
+
+.memory-card img {
+  display: block;
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  border-radius: 12px;
+}
+
+.memory-card h3 {
+  color: #ffb2e5;
+  font-size: 17px;
+  margin: 16px 4px 8px;
+}
+
+.memory-card p {
+  color: #eee2fa;
+  font-size: 13px;
+  line-height: 1.7;
+  margin: 0 4px 10px;
+}
+
+.gallery-ending {
+  margin: 32px auto 10px;
+  max-width: 600px;
+  color: #ffb8e8;
+  font-size: 16px;
+  line-height: 1.8;
+  text-shadow: 0 0 8px rgba(255, 57, 207, 0.35);
+}
+
+@media (max-width: 480px) {
+  .gallery-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .memory-card img {
+    height: 250px;
+  }
+}
+
+
+/* Romantic Gallery Enhancements */
+
+.memory-gallery {
+  animation: galleryFadeIn 1s ease both;
+}
+
+.memory-card {
+  position: relative;
+  background: linear-gradient(
+    145deg,
+    rgba(48, 20, 72, 0.95),
+    rgba(20, 10, 35, 0.95)
+  );
+  border: 1px solid rgba(255, 57, 207, 0.65);
+  border-radius: 18px;
+  overflow: hidden;
+  transition: transform 0.35s ease,
+              box-shadow 0.35s ease;
+}
+
+.memory-card:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 0 22px rgba(255, 57, 207, 0.35);
+}
+
+.memory-card img {
+  transition: transform 0.5s ease,
+              filter 0.5s ease;
+}
+
+.memory-card:hover img {
+  transform: scale(1.04);
+  filter: brightness(1.08);
+}
+
+.gallery-title {
+  animation: titleGlow 3s ease-in-out infinite alternate;
+}
+
+@keyframes galleryFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes titleGlow {
+  from {
+    text-shadow: 0 0 8px #ff39cf;
+  }
+  to {
+    text-shadow: 0 0 18px #ff39cf,
+                 0 0 28px rgba(255, 57, 207, 0.4);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .memory-gallery,
+  .gallery-title {
+    animation: none;
+  }
+
+  .memory-card,
+  .memory-card img {
+    transition: none;
+  }
+}

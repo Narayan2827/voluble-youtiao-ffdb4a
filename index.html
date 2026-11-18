@@ -1,0 +1,925 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Our Story — Precious Memories ❤️</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<style>
+/* =========================
+   BASE STYLES
+========================= */
+
+:root {
+  --bg: #090311;
+  --panel: #170b22;
+  --pink: #ff43d0;
+  --pink-light: #ffc0ef;
+  --purple: #b57aff;
+  --text: #fcecff;
+  --muted: #c5aaca;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  color: var(--text);
+  background:
+    radial-gradient(ellipse at 50% 0%, #351047 0%, transparent 45%),
+    radial-gradient(ellipse at 0% 55%, #230d31 0%, transparent 35%),
+    var(--bg);
+  font-family: 'Poppins', sans-serif;
+  overflow-x: hidden;
+}
+
+button {
+  font: inherit;
+}
+
+button:focus-visible {
+  outline: 2px solid white;
+  outline-offset: 5px;
+}
+
+/* =========================
+   BACKGROUND DECORATIONS
+========================= */
+
+#backgroundEffects {
+  position: fixed;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.star {
+  position: absolute;
+  color: #ff8de8;
+  animation: twinkle 3s ease-in-out infinite alternate;
+}
+
+.floating-heart {
+  position: absolute;
+  bottom: -40px;
+  color: var(--pink);
+  opacity: 0;
+  animation: floatUp linear infinite;
+}
+
+@keyframes twinkle {
+  from {
+    opacity: .15;
+    transform: scale(.8);
+  }
+  to {
+    opacity: .85;
+    transform: scale(1.2);
+  }
+}
+
+@keyframes floatUp {
+  10% { opacity: .55; }
+  100% {
+    transform: translateY(-110vh) rotate(35deg);
+    opacity: 0;
+  }
+}
+
+/* =========================
+   HEADER
+========================= */
+
+.site-header {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 15px;
+  padding: 23px 7%;
+  border-bottom: 1px solid #ff43d01b;
+}
+
+.logo {
+  color: var(--pink);
+  font: 700 32px 'Dancing Script', cursive;
+  text-shadow: 0 0 15px #ff43d080;
+}
+
+.header-tagline {
+  color: #d8b4e5;
+  font: 500 20px 'Dancing Script', cursive;
+}
+
+/* =========================
+   HERO SECTION
+========================= */
+
+.hero {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 65px 20px 75px;
+  animation: fadeIn 1s ease both;
+}
+
+.hero-badge {
+  width: 76px;
+  height: 76px;
+  margin: 0 auto 22px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--pink);
+  border-radius: 50%;
+  color: var(--pink);
+  font-size: 35px;
+  box-shadow:
+    0 0 18px #ff43d050,
+    inset 0 0 15px #ff43d020;
+  animation: heartbeat 2.5s infinite;
+}
+
+.hero h1 {
+  color: var(--pink-light);
+  font: 700 clamp(43px, 7vw, 78px) 'Dancing Script', cursive;
+  text-shadow:
+    0 0 12px #ff43d080,
+    0 0 35px #ff43d035;
+  margin-bottom: 16px;
+}
+
+.hero p {
+  color: #e0c4eb;
+  font: 500 clamp(18px, 3vw, 25px) 'Dancing Script', cursive;
+  line-height: 1.8;
+}
+
+.hero-small {
+  color: #bd9acb;
+  font-size: 10px;
+  letter-spacing: 3px;
+  margin-top: 27px;
+  text-transform: uppercase;
+}
+
+.hero-line {
+  width: 100px;
+  height: 1px;
+  margin: 20px auto;
+  background: linear-gradient(90deg, transparent, var(--pink), transparent);
+  box-shadow: 0 0 12px var(--pink);
+}
+
+@keyframes heartbeat {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.07); }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* =========================
+   TIMELINE INTRO
+========================= */
+
+.timeline-heading {
+  position: relative;
+  z-index: 1;
+  text-align: center;
+  padding: 0 20px 55px;
+}
+
+.timeline-heading h2 {
+  font: 600 clamp(34px, 5vw, 48px) 'Dancing Script', cursive;
+  color: var(--pink-light);
+  margin-bottom: 10px;
+}
+
+.timeline-heading p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.8;
+}
+
+/* =========================
+   ALTERNATING TIMELINE
+========================= */
+
+.timeline {
+  position: relative;
+  z-index: 1;
+  width: min(1050px, 100%);
+  margin: 0 auto;
+  padding: 0 24px 50px;
+}
+
+/* Central glowing line */
+
+.timeline::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  transform: translateX(-50%);
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    #ff43d0 5%,
+    #b57aff 50%,
+    #ff43d0 95%,
+    transparent
+  );
+  box-shadow: 0 0 12px #ff43d080;
+}
+
+.timeline-item {
+  position: relative;
+  width: 50%;
+  padding: 0 45px 65px 0;
+  opacity: 0;
+  transform: translateY(25px);
+  transition:
+    opacity .7s ease,
+    transform .7s ease;
+}
+
+.timeline-item.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-item:nth-child(even) {
+  margin-left: 50%;
+  padding: 0 0 65px 45px;
+}
+
+/* Timeline heart markers */
+
+.timeline-marker {
+  position: absolute;
+  z-index: 2;
+  top: 26px;
+  right: -18px;
+  width: 36px;
+  height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--pink);
+  border-radius: 50%;
+  background: #170921;
+  color: var(--pink);
+  box-shadow: 0 0 14px #ff43d060;
+  font-size: 15px;
+}
+
+.timeline-item:nth-child(even) .timeline-marker {
+  right: auto;
+  left: -18px;
+}
+
+/* Date label */
+
+.memory-date {
+  display: block;
+  margin-bottom: 12px;
+  color: #ff8fe2;
+  font-size: 10px;
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+/* Memory card */
+
+.memory-card {
+  overflow: hidden;
+  border: 1px solid #ff43d065;
+  border-radius: 16px;
+  background: linear-gradient(145deg, #21102e, #100819);
+  box-shadow:
+    0 8px 28px #00000030,
+    0 0 12px #ff43d018;
+  transition:
+    border-color .3s ease,
+    box-shadow .3s ease,
+    transform .3s ease;
+}
+
+.memory-card:hover {
+  border-color: var(--pink);
+  box-shadow: 0 0 24px #ff43d045;
+  transform: translateY(-4px);
+}
+
+.memory-photo {
+  display: block;
+  position: relative;
+  width: 100%;
+  padding: 0;
+  border: none;
+  background: #1b0c27;
+  cursor: zoom-in;
+  overflow: hidden;
+}
+
+.memory-photo img {
+  display: block;
+  width: 100%;
+  height: 275px;
+  object-fit: cover;
+  transition: transform .6s ease;
+}
+
+.memory-photo:hover img {
+  transform: scale(1.05);
+}
+
+.photo-overlay {
+  position: absolute;
+  inset: auto 0 0;
+  padding: 35px 12px 12px;
+  text-align: right;
+  background: linear-gradient(transparent, #100819b0);
+  color: #fff;
+  font-size: 20px;
+  pointer-events: none;
+}
+
+.memory-content {
+  padding: 18px 19px 21px;
+}
+
+.memory-number {
+  display: block;
+  margin-bottom: 8px;
+  color: #ff76db;
+  font-size: 9px;
+  letter-spacing: 2px;
+}
+
+.memory-content h3 {
+  color: var(--pink-light);
+  font: 600 29px 'Dancing Script', cursive;
+  margin-bottom: 9px;
+}
+
+.memory-content p {
+  color: #cbb7d5;
+  font-size: 11px;
+  line-height: 1.9;
+}
+
+/* =========================
+   ENDING MESSAGE
+========================= */
+
+.ending {
+  position: relative;
+  z-index: 1;
+  max-width: 700px;
+  margin: 0 auto;
+  padding: 30px 25px 75px;
+  text-align: center;
+}
+
+.ending-heart {
+  color: var(--pink);
+  font-size: 30px;
+  text-shadow: 0 0 18px var(--pink);
+  margin-bottom: 15px;
+}
+
+.ending h2 {
+  color: var(--pink-light);
+  font: 700 clamp(36px, 6vw, 55px) 'Dancing Script', cursive;
+  text-shadow: 0 0 18px #ff43d030;
+  margin-bottom: 15px;
+}
+
+.ending p {
+  color: #ddc9e6;
+  font-size: 12px;
+  line-height: 2;
+}
+
+.signature {
+  color: #ff8fe2;
+  font: 600 25px 'Dancing Script', cursive;
+  margin-top: 22px;
+}
+
+/* =========================
+   FULLSCREEN VIEWER
+========================= */
+
+.lightbox {
+  position: fixed;
+  inset: 0;
+  z-index: 20;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  padding: 65px 65px 25px;
+  background: #08020ef5;
+  backdrop-filter: blur(12px);
+}
+
+.lightbox.open {
+  display: flex;
+  animation: fadeIn .25s ease;
+}
+
+.viewer {
+  width: min(850px, 100%);
+  text-align: center;
+}
+
+.viewer img {
+  display: block;
+  max-width: 100%;
+  max-height: 72vh;
+  margin: auto;
+  object-fit: contain;
+  border: 1px solid #ff43d080;
+  border-radius: 10px;
+  box-shadow: 0 0 28px #ff43d025;
+}
+
+.viewer-caption {
+  margin-top: 17px;
+  color: var(--pink-light);
+  font: 600 29px 'Dancing Script', cursive;
+}
+
+.viewer-count {
+  margin-top: 7px;
+  color: #bda5cb;
+  font-size: 10px;
+  letter-spacing: 2px;
+}
+
+.viewer-button {
+  position: absolute;
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  color: white;
+  border: 1px solid var(--pink);
+  border-radius: 50%;
+  background: #ff43d01a;
+  cursor: pointer;
+  transition: background .2s, box-shadow .2s;
+}
+
+.viewer-button:hover {
+  background: #ff43d055;
+  box-shadow: 0 0 15px #ff43d050;
+}
+
+.viewer-close {
+  top: 20px;
+  right: 20px;
+  font-size: 27px;
+}
+
+.viewer-prev {
+  left: 17px;
+  top: 50%;
+  font-size: 27px;
+}
+
+.viewer-next {
+  right: 17px;
+  top: 50%;
+  font-size: 27px;
+}
+
+/* =========================
+   FOOTER AND MOBILE
+========================= */
+
+footer {
+  position: relative;
+  z-index: 1;
+  padding: 23px 15px;
+  border-top: 1px solid #ff43d020;
+  text-align: center;
+  color: #a88bb5;
+  font-size: 10px;
+}
+
+@media (max-width: 700px) {
+  .site-header {
+    padding: 20px 5%;
+  }
+
+  .logo {
+    font-size: 27px;
+  }
+
+  .header-tagline {
+    font-size: 16px;
+  }
+
+  .hero {
+    padding-top: 35px;
+  }
+
+  .timeline {
+    padding: 0 15px 30px 35px;
+  }
+
+  .timeline::before {
+    left: 17px;
+  }
+
+  .timeline-item,
+  .timeline-item:nth-child(even) {
+    width: 100%;
+    margin-left: 0;
+    padding: 0 0 40px 20px;
+  }
+
+  .timeline-marker,
+  .timeline-item:nth-child(even) .timeline-marker {
+    left: -35px;
+    right: auto;
+    top: 22px;
+    width: 35px;
+    height: 35px;
+  }
+
+  .memory-photo img {
+    height: 260px;
+  }
+
+  .lightbox {
+    padding: 60px 38px 25px;
+  }
+
+  .viewer-button {
+    width: 35px;
+    height: 35px;
+  }
+
+  .viewer-prev { left: 4px; }
+  .viewer-next { right: 4px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation: none !important;
+    transition: none !important;
+  }
+
+  .timeline-item {
+    opacity: 1;
+    transform: none;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<div id="backgroundEffects" aria-hidden="true"></div>
+
+<header class="site-header">
+  <div class="logo">Our Love ♡</div>
+  <div class="header-tagline">You & Me, Always ♥</div>
+</header>
+
+<section class="hero">
+  <div class="hero-badge">♥</div>
+  <h1>Our Story in Memories</h1>
+  <p>Some moments become memories. Some memories become forever.</p>
+  <div class="hero-small">A LITTLE JOURNEY THROUGH OUR HEARTS</div>
+  <div class="hero-line"></div>
+</section>
+
+<section class="timeline-heading">
+  <h2>Every Picture Has a Story ✨</h2>
+  <p>One beautiful memory at a time, a story worth keeping.</p>
+</section>
+
+<main>
+  <section class="timeline" id="timeline">
+    <!-- Timeline cards are generated from the image list -->
+  </section>
+
+  <section class="ending">
+    <div class="ending-heart">♥</div>
+    <h2>And Our Story Continues...</h2>
+    <p>
+      Every picture holds a little piece of our story.
+      Every moment has its own magic, and every memory
+      reminds us that even the smallest moments can mean
+      the most. These memories will always be precious.
+    </p>
+    <div class="signature">With love, always ♡</div>
+  </section>
+</main>
+
+<footer>
+  Made with love, for the moments that matter most ♥
+</footer>
+
+<!-- Fullscreen image viewer -->
+
+<div class="lightbox" id="lightbox"
+     role="dialog" aria-modal="true" aria-label="Memory viewer">
+
+  <button class="viewer-button viewer-close" id="closeViewer"
+          aria-label="Close viewer">&times;</button>
+
+  <button class="viewer-button viewer-prev" id="prevPhoto"
+          aria-label="Previous photo">&#8249;</button>
+
+  <div class="viewer">
+    <img id="viewerImage" src="" alt="">
+    <div class="viewer-caption" id="viewerCaption"></div>
+    <div class="viewer-count" id="viewerCount"></div>
+  </div>
+
+  <button class="viewer-button viewer-next" id="nextPhoto"
+          aria-label="Next photo">&#8250;</button>
+</div>
+
+<script>
+/* =========================
+   YOUR 10 PHOTOS
+   Keep image files in the same
+   folder as index.html.
+========================= */
+
+const memories = [
+  {
+    src: "1793861751181.png",
+    date: "A LITTLE BEGINNING",
+    title: "A Special Memory ❤️",
+    text: "Every beautiful story begins somewhere."
+  },
+  {
+    src: "image.png",
+    date: "A BEAUTIFUL MOMENT",
+    title: "A Beautiful Moment 💗",
+    text: "Some moments make ordinary days unforgettable."
+  },
+  {
+    src: "image2.png",
+    date: "A LITTLE HAPPINESS",
+    title: "Your Beautiful Smile ✨",
+    text: "A smile that makes the world feel brighter."
+  },
+  {
+    src: "image3.png",
+    date: "LITTLE THINGS",
+    title: "Little Moments, Big Love 🫶",
+    text: "Sometimes the smallest things mean the most."
+  },
+  {
+    src: "image4.png",
+    date: "CLOSE TO MY HEART",
+    title: "My Favourite Memory 🌹",
+    text: "A moment worth keeping close forever."
+  },
+  {
+    src: "image5.png",
+    date: "A DAY TO REMEMBER",
+    title: "A Moment to Remember 💌",
+    text: "Some memories never lose their magic."
+  },
+  {
+    src: "image6.png",
+    date: "A PRECIOUS MEMORY",
+    title: "Forever in My Heart 💖",
+    text: "A little memory with a very special place."
+  },
+  {
+    src: "image7.png",
+    date: "OUR STORY",
+    title: "Together, Always 🌷",
+    text: "One more page in our beautiful story."
+  },
+  {
+    src: "imagep.png",
+    date: "A MOMENT TO CHERISH",
+    title: "Our Precious Story 💕",
+    text: "Some moments deserve to be remembered."
+  },
+  {
+    src: "imsge 1.png",
+    date: "A LASTING MEMORY",
+    title: "A Memory to Cherish ❤️",
+    text: "A little piece of a story that matters."
+  }
+];
+
+/* CREATE ALTERNATING TIMELINE */
+
+const timeline = document.getElementById("timeline");
+
+memories.forEach((memory, index) => {
+  const item = document.createElement("article");
+  item.className = "timeline-item";
+
+  const marker = document.createElement("div");
+  marker.className = "timeline-marker";
+  marker.textContent = "♥";
+  marker.setAttribute("aria-hidden", "true");
+
+  const date = document.createElement("span");
+  date.className = "memory-date";
+  date.textContent = memory.date;
+
+  const card = document.createElement("div");
+  card.className = "memory-card";
+
+  const photoButton = document.createElement("button");
+  photoButton.className = "memory-photo";
+  photoButton.type = "button";
+  photoButton.setAttribute("aria-label", "Open " + memory.title);
+
+  const img = document.createElement("img");
+  img.src = memory.src;
+  img.alt = memory.title;
+  img.loading = index < 2 ? "eager" : "lazy";
+
+  img.addEventListener("error", () => {
+    console.error("Could not load image:", memory.src);
+    img.alt = memory.title + " — image file not found";
+    img.style.objectFit = "contain";
+    img.style.minHeight = "160px";
+  });
+
+  const overlay = document.createElement("span");
+  overlay.className = "photo-overlay";
+  overlay.textContent = "♡";
+
+  photoButton.append(img, overlay);
+
+  const content = document.createElement("div");
+  content.className = "memory-content";
+
+  const number = document.createElement("span");
+  number.className = "memory-number";
+  number.textContent =
+    "MEMORY " + String(index + 1).padStart(2, "0");
+
+  const title = document.createElement("h3");
+  title.textContent = memory.title;
+
+  const text = document.createElement("p");
+  text.textContent = memory.text;
+
+  content.append(number, title, text);
+  card.append(photoButton, content);
+  item.append(marker, date, card);
+  timeline.appendChild(item);
+});
+
+/* SCROLL REVEAL */
+
+const timelineItems = document.querySelectorAll(".timeline-item");
+
+if ("IntersectionObserver" in window) {
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.08 });
+
+  timelineItems.forEach(item => observer.observe(item));
+} else {
+  timelineItems.forEach(item => item.classList.add("visible"));
+}
+
+/* STARS AND FLOATING HEARTS */
+
+const effects = document.getElementById("backgroundEffects");
+
+for (let i = 0; i < 45; i++) {
+  const star = document.createElement("span");
+  star.className = "star";
+  star.textContent = Math.random() > 0.5 ? "✦" : "·";
+  star.style.left = Math.random() * 100 + "%";
+  star.style.top = Math.random() * 100 + "%";
+  star.style.fontSize = (8 + Math.random() * 10) + "px";
+  star.style.animationDelay = Math.random() * 3 + "s";
+  effects.appendChild(star);
+}
+
+for (let i = 0; i < 12; i++) {
+  const heart = document.createElement("span");
+  heart.className = "floating-heart";
+  heart.textContent = Math.random() > 0.5 ? "♡" : "♥";
+  heart.style.left = Math.random() * 100 + "%";
+  heart.style.fontSize = (14 + Math.random() * 14) + "px";
+  heart.style.animationDuration = (13 + Math.random() * 12) + "s";
+  heart.style.animationDelay = (-Math.random() * 20) + "s";
+  effects.appendChild(heart);
+}
+
+/* FULLSCREEN PHOTO VIEWER */
+
+const lightbox = document.getElementById("lightbox");
+const viewerImage = document.getElementById("viewerImage");
+const viewerCaption = document.getElementById("viewerCaption");
+const viewerCount = document.getElementById("viewerCount");
+
+let currentIndex = 0;
+let lastFocusedElement = null;
+
+function showMemory(index) {
+  currentIndex = (index + memories.length) % memories.length;
+
+  const memory = memories[currentIndex];
+
+  viewerImage.src = memory.src;
+  viewerImage.alt = memory.title;
+  viewerCaption.textContent = memory.title;
+  viewerCount.textContent =
+    "MEMORY " + (currentIndex + 1) + " OF " + memories.length;
+}
+
+function openViewer(index) {
+  lastFocusedElement = document.activeElement;
+  showMemory(index);
+  lightbox.classList.add("open");
+  document.body.style.overflow = "hidden";
+  document.getElementById("closeViewer").focus();
+}
+
+function closeViewer() {
+  lightbox.classList.remove("open");
+  document.body.style.overflow = "";
+
+  if (lastFocusedElement) {
+    lastFocusedElement.focus();
+  }
+}
+
+timeline.addEventListener("click", event => {
+  const button = event.target.closest(".memory-photo");
+
+  if (!button) return;
+
+  const item = button.closest(".timeline-item");
+  const index = Array.from(timeline.children).indexOf(item);
+
+  if (index >= 0) openViewer(index);
+});
+
+document.getElementById("closeViewer")
+  .addEventListener("click", closeViewer);
+
+document.getElementById("prevPhoto")
+  .addEventListener("click", () => showMemory(currentIndex - 1));
+
+document.getElementById("nextPhoto")
+  .addEventListener("click", () => showMemory(currentIndex + 1));
+
+lightbox.addEventListener("click", event => {
+  if (event.target === lightbox) closeViewer();
+});
+
+document.addEventListener("keydown", event => {
+  if (!lightbox.classList.contains("open")) return;
+
+  if (event.key === "Escape") closeViewer();
+  if (event.key === "ArrowLeft") showMemory(currentIndex - 1);
+  if (event.key === "ArrowRight") showMemory(currentIndex + 1);
+});
+</script>
+
+</body>
+</html>
